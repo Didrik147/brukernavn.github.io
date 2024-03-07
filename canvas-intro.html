@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas intro</title>
+
+    <style>
+        #canvas {
+            border: 2px solid black;
+            cursor: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Introduksjon til canvas</h1>
+
+    <canvas id="canvas" width="400px" height="500px"></canvas>
+
+    <script>
+        // Henter canavs fra DOM
+        const canvas = document.getElementById('canvas')
+
+        // ctx står for context
+        let ctx = canvas.getContext('2d')
+
+        // Lager tilfeldig heltall fra og med 0 til og med 255
+        let red = Math.floor(Math.random()*256)
+        let green = Math.floor(Math.random()*256)
+        let blue = Math.floor(Math.random()*256)
+
+        function tegnSirkel(e){
+            //console.log(e)
+
+            // Tømmer lerretet
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+            // Tegner en sirkel
+            ctx.beginPath()
+
+            let x = e.offsetX
+            let y = e.offsetY
+            let r = 15
+
+            ctx.arc(x, y, r, 0, 2*Math.PI)
+
+            // Tegner strek rundt sirkelen
+            ctx.stroke()
+
+            // Fyller sirkelen med en farge
+            ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`
+            ctx.fill()
+        }
+
+        canvas.addEventListener('mousemove', tegnSirkel)
+
+    </script>
+</body>
+</html>
