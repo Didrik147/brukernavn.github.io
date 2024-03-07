@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API-er</title>
+</head>
+
+<body>
+    <h1>Repetisjon av API-er</h1>
+
+    <script>
+        async function getFromAPI() {
+            //let url = "https://icanhazdadjoke.com/"
+            let url = "http://numbersapi.com/31/math?json"
+
+            //let promise = fetch(url)
+            /* let response = await fetch(url, {
+                headers: {
+                    "Accept": "application/json"
+                }
+            }) */
+
+            let response = await fetch(url)
+
+            console.log(response)
+
+            if (response.status == 200){
+                let data = await response.json()
+
+                console.log(data)
+                //console.log(data.joke)
+                console.log(data.text)
+            }
+            
+        }
+
+        getFromAPI()
+    </script>
+</body>
+
+</html>
